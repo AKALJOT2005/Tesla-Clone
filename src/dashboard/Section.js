@@ -5,7 +5,7 @@ const Section=(props)=>{
     
   return(  
      
-      <Wrap bgimage={props.image}>
+      <Wrap id={props.hid} bgimage={props.image}>
            <Fade bottom cascade>
         {/* <img src={props.image}/> */}
     <Topmodel>

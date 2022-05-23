@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components"
 import Dashboard from "./Dashboard";
 import CloseIcon from '@mui/icons-material/Close';
+import {Link} from 'react-scroll'
 const Header =()=>{
     const [custom,setCustom]=useState(false);
 
@@ -17,13 +18,12 @@ const Header =()=>{
     <img src="tesla_logo.png"/>
     </a>
         <LeftMenu>
-        <a href="#">Model s</a>
-        <a href="#">model 3</a>
-        <a href="#">model x</a>
-        <a href="#">model y</a> 
-        <a href="#">model y</a>
-        <a href="#">solar roof</a>
-        <a href="#">wall mount</a> 
+        <a href="#"><Link activeClass="active" to="models" spy={true} smooth={true}>Model s</Link></a>
+        <a href="#"><Link to="model3" spy={true} smooth={true}>model 3</Link></a>
+        <a href="#"><Link to="modelx" spy={true} smooth={true}>model x</Link></a>
+        <a href="#"><Link to="modely" spy={true} smooth={true}>model y</Link></a> 
+        <a href="#"><Link to="roof" spy={true} smooth={true}>solar roof</Link></a>
+        <a href="#"><Link to="charger" spy={true} smooth={true}>wall mount</Link></a> 
         </LeftMenu> 
 
         <RightMenu>    
@@ -35,15 +35,15 @@ const Header =()=>{
         <CustomClose onClick={CloseFunction} >
         <CloseTag />
         </CustomClose>
-        <li><a>model S</a></li>
-        <li><a>moderl 3</a></li>
-        <li><a>model x</a></li>
-        <li><a>model y</a></li>
-        <li><a>solar roof</a></li>
-        <li><a>wall mount</a></li>
-        <li><a>profile</a></li>
-        <li><a>country</a></li>
-        <li><a>customer care</a></li>
+        <li><a ><Link  activeClass="active" to="models" spy={true} smooth={true}>model S</Link></a></li>
+        <li><a ><Link  to="model3" spy={true} smooth={true}>model 3</Link></a></li>
+        <li><a ><Link  to="modelx" spy={true} smooth={true}>model x</Link></a></li>
+        <li><a ><Link  to="modely" spy={true} smooth={true}>model y</Link></a></li>
+        <li><a ><Link  to="roof" spy={true} smooth={true}>solar roof</Link></a></li>
+        <li><a ><Link  to="charger" spy={true} smooth={true}>wall mount</Link></a></li>
+        <li><a >profile</a></li>
+        <li><a >country    -  [germany]</a><img src='country.webp'/></li>
+        <li><a >customer care</a></li>
         </Burger>
         </RightMenu>
         
@@ -64,7 +64,7 @@ const Container=styled.div`
 
     a{
         display:flex;
-        margin-top:10px;
+        margin-top:14px;
         height:5vh;
         flex-wrap:nowrap;
         align-items:space-between;
@@ -80,15 +80,14 @@ margin-left:30px;
 a{
     color:black;
     font-weight:800;
-    margin-left:10px;
-    margin-right:-10px;
+    padding-right:-10px;
     display:flex
     align-items:center;
     justify-content:center;
-    margin-left:50px;
+    padding-left:30px;
     text-transform:uppercase;
-    font-size:11px;
-    margin-top:16px;
+    font-size:12px;
+    margin-top:12px;
 
     @media (max-width:768px){
              display:none;
@@ -108,9 +107,8 @@ a{
     display:flex;
     margin-left:15px;
     font-size:12px;
-    margin-top:10px;
     text-transform:uppercase;
-    margin-top:16px;
+    margin-top:24px;
     
 }
 `
@@ -118,17 +116,19 @@ const Burger=styled.div`
 position:fixed;
 padding-top:20px;
 padding-left:3px;
-padding-bottom:30px;
+padding-bottom:0px;
 background-color:white;
 list-style:none; 
 display:flex;
 flex-direction:column;
 text-align:start;
 width:350px;
-height:88.3vh;
+height:90vh;
 opacity:0.95;
 transform:${(props)=>props.show?"translateX(0)":"translate(100%)"};
+overflow-y:scroll;
 li{
+
     border-bottom:1px solid rgba(0,0,0,.2);
     text-transform:uppercase;
     padding-bottom:10px;
@@ -136,8 +136,22 @@ li{
     padding-top:10px;
 }
 a{
+    display:flex;
+    margin-bottom:30px;
+    margin-left:2px;
+    align-items:flex-start;
+    justify-content:flex-start;
     font-weight:600;
     font-size:17px;
+}
+img{
+    position:absolute;
+    display:flex;
+    height:20px;
+    justify-content:flex-end;
+    align-items:flex-end;
+    margin-left:60% ;
+    margin-top:-55px;
 }
 `
 
@@ -147,6 +161,6 @@ const CustomClose=styled.div`
 position:relative;
 display:flex;
 justify-content:flex-end;
-padding-right:60px;
+padding-right:80px;
 `
 export default Header
